@@ -15,7 +15,8 @@ jobs:
     needs: [check]
     steps:
     - uses: actions/checkout@v2 
-    - run: make build
+    - run: cmake . &&  cmake --build . &&  CTEST_OUTPUT_ON_FAILURE=TRUE cmake --build . --target test
+
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
